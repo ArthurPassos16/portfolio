@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-unbounded);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #3a3a46 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 60%, #1d1a2a 0%, transparent 70%),
+    #050506;
+}
+
+/* Texto cromado com reflexo que desliza */
+.chrome {
+  background: linear-gradient(
+    100deg,
+    #6b6b74 0%, #f4f4f6 18%, #9a9aa3 32%, #ffffff 46%, #77777f 60%, #e9e9ee 78%, #8a8a92 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 8s linear infinite;
+}
+
+/* Brilho iridescente (holográfico) */
+.holo {
+  background: linear-gradient(90deg, #c9d6ff, #f5c6ff, #ffe7c2, #c2fff1, #c9d6ff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 10s linear infinite;
+}
+
+/* Card de vidro com borda cromada/iridescente */
+.glass {
+  position: relative;
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.01));
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.05) 40%, rgb(245 198 255 / 0.35) 70%, rgb(194 255 241 / 0.4));
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.glass:hover::before {
+  opacity: 1;
+}
+
+/* Botão de metal polido */
+.btn-chrome {
+  background: linear-gradient(180deg, #ffffff 0%, #c8c8d0 45%, #8e8e98 55%, #e6e6ec 100%);
+  color: #0a0a0c;
+  box-shadow: 0 0 24px rgb(255 255 255 / 0.15), inset 0 1px 0 #fff;
+}
+
+/* Globo de espelhos */
+.disco {
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.95) 0 3%, transparent 12%),
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.55) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.55) 0 1px, transparent 1px 14px),
+    conic-gradient(from 0deg, #555, #eee, #777, #fff, #666, #ddd, #888, #f5f5f5, #555);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 200% 200%;
+  box-shadow:
+    inset -30px -30px 60px rgb(0 0 0 / 0.85),
+    inset 10px 10px 30px rgb(255 255 255 / 0.25),
+    0 0 80px rgb(255 255 255 / 0.12);
+  animation: spin-tiles 14s linear infinite;
+}
+
+/* Raios de luz atrás do globo */
+.beams {
+  background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / 0.07) 0 4deg, transparent 4deg 22deg);
+  mask: radial-gradient(circle, #000 20%, transparent 70%);
+  animation: rotate 60s linear infinite;
+}
+
+/* Purpurina de fundo */
+.sparkles {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 70%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 55% 35%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 80%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 90% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 45% 90%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 20% 50%, #fff, transparent);
+  background-size: 400px 400px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes shine {
+  to { background-position: -250% 0; }
+}
+@keyframes spin-tiles {
+  to { background-position: 0 0, 0 0, 140px 0, 200% 0; }
+}
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+@keyframes twinkle {
+  from { opacity: 0.25; }
+  to { opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; }
+}
