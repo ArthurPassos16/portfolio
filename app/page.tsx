@@ -1,4 +1,4 @@
-import { apps, education, experience, profile, skills } from "@/lib/data";
+import { type App, apps, caseStudies, education, experience, profile, publishedApps, skills } from "@/lib/data";
 
 function Section({ id, act, title, children }: { id: string; act: string; title: string; children: React.ReactNode }) {
   return (
@@ -10,7 +10,26 @@ function Section({ id, act, title, children }: { id: string; act: string; title:
   );
 }
 
+// dd/mm/yyyy -> yyyymmdd; undated apps sort last
+const sortKey = (d?: string) => (d ? d.split("/").reverse().join("") : "");
+const SHOWN = 6;
+const topApps = [...apps].sort((a, b) => b.downloads - a.downloads).slice(0, SHOWN);
+const otherApps = apps.filter((a) => !topApps.includes(a)).sort((a, b) => sortKey(b.date).localeCompare(sortKey(a.date)));
+const totalDownloads = apps.reduce((sum, a) => sum + a.downloads, 0);
+const fmt = (n: number) => n.toLocaleString("pt-BR");
+
 const link = "rounded-full border border-white/20 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-zinc-300 transition hover:border-white hover:text-white";
+const published = publishedApps().length;
+
+function StoreLinks({ app }: { app: App }) {
+  if (app.status) return <span className="rounded-full border border-dashed border-white/20 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-zinc-500">{app.status}</span>;
+  return (
+    <>
+      <a href={app.play} target="_blank" rel="noopener noreferrer" className={link}>Google Play</a>
+      {app.apple && <a href={app.apple} target="_blank" rel="noopener noreferrer" className={link}>App Store</a>}
+    </>
+  );
+}
 
 export default function Home() {
   return (
@@ -45,6 +64,9 @@ export default function Home() {
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/30 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-white/10">
                 LinkedIn
               </a>
+              <a href={profile.resume} download className="rounded-full border border-white/30 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-white/10">
+                Currículo PDF
+              </a>
             </div>
           </div>
 
@@ -55,36 +77,85 @@ export default function Home() {
 
           <dl className="grid grid-cols-3 gap-3 lg:col-span-2">
             {[
-              [`${apps.length}`, "apps publicados"],
+              [`${published}`, "apps publicados"],
+              [`+${fmt(Math.floor(totalDownloads / 100) * 100)}`, "downloads"],
               ["4", "anos de Flutter"],
-              ["2", "lojas · iOS + Android"],
             ].map(([n, label]) => (
-              <div key={label} className="glass p-4 sm:p-6">
-                <dt className="sr-only">{label}</dt>
+              <div key={label} className="glass flex flex-col p-4 sm:p-6">
+                <dt className="order-last mt-1 font-mono text-[10px] uppercase tracking-widest text-zinc-500 sm:text-xs">{label}</dt>
                 <dd className="chrome font-display text-xl font-bold sm:text-4xl">{n}</dd>
-                <dd className="mt-1 font-mono text-[10px] uppercase tracking-widest text-zinc-500 sm:text-xs">{label}</dd>
               </div>
             ))}
           </dl>
         </section>
 
-        <Section id="apps" act="Act II · Discografia" title={`${apps.length} apps publicados`}>
+        <Section id="apps" act="Act II · Discografia" title={`${published} apps publicados`}>
           <p className="-mt-4 mb-10 max-w-2xl text-zinc-400">
-            Bibliotecas digitais em Flutter para UNA-SUS/UFMA, Ministério da Saúde e Ministério do Turismo, publicadas na App Store e no Google Play.
+            Bibliotecas digitais em Flutter para UNA-SUS/UFMA, Ministério da Saúde e Ministério do Turismo, publicadas na App Store e no Google Play. Mais baixados primeiro; downloads somados das duas lojas até 20/10/2026.
           </p>
+          <div className="mb-10 space-y-6">
+            {caseStudies.map((c) => (
+              <article key={c.app} className="glass grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.5fr_1fr]">
+                <div>
+                  <p className="holo font-mono text-xs uppercase tracking-[0.25em]">Estudo de caso · {c.client}</p>
+                  <h3 className="mt-2 font-display text-2xl font-bold">{c.app}</h3>
+                  <p className="mt-4 text-zinc-300">{c.problem}</p>
+                  <ul className="mt-5 space-y-2 text-zinc-300">
+                    {c.role.map((r) => (
+                      <li key={r} className="flex gap-3"><span className="text-zinc-600">✦</span>{r}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {c.stack.map((s) => (
+                      <span key={s} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-zinc-200">{s}</span>
+                    ))}
+                    {"repo" in c && <a href={c.repo} target="_blank" rel="noopener noreferrer" className={link}>Código no GitHub</a>}
+                  </div>
+                </div>
+                <dl className="grid content-center gap-3">
+                  {c.stats.map(([n, label]) => (
+                    <div key={label} className="flex flex-col border-l border-white/20 pl-4">
+                      <dt className="order-last font-mono text-[10px] uppercase tracking-widest text-zinc-500">{label}</dt>
+                      <dd className="chrome font-display text-3xl font-bold">{n}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {apps.map((app, i) => (
+            {topApps.map((app, i) => (
               <li key={app.name} className="glass flex flex-col p-6 transition hover:-translate-y-1">
                 <span className="font-mono text-xs text-zinc-600">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-2 font-display text-base font-semibold leading-snug text-zinc-100">{app.name}</h3>
-                {app.date && <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-zinc-500">Lançado {app.date}</p>}
+                <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-zinc-500">
+                  {fmt(app.downloads)} downloads{app.date && ` · Lançado ${app.date}`}
+                </p>
                 <div className="mt-auto flex gap-2 pt-5">
-                  <a href={app.play} target="_blank" rel="noopener noreferrer" className={link}>Google Play</a>
-                  {app.apple && <a href={app.apple} target="_blank" rel="noopener noreferrer" className={link}>App Store</a>}
+                  <StoreLinks app={app} />
                 </div>
               </li>
             ))}
           </ol>
+          <details className="group mt-6">
+            <summary className="cursor-pointer list-none font-mono text-xs uppercase tracking-widest text-zinc-400 hover:text-white">
+              <span className="group-open:hidden">+ Ver todos os {apps.length} apps</span>
+              <span className="hidden group-open:inline">− Ocultar</span>
+            </summary>
+            <ol start={SHOWN + 1} className="mt-4 divide-y divide-white/10 border-y border-white/10">
+              {otherApps.map((app) => (
+                <li key={app.name} className="flex flex-wrap items-center justify-between gap-2 py-3">
+                  <span className="text-zinc-200">
+                    {app.name}
+                    <span className="ml-3 font-mono text-[11px] text-zinc-500">{fmt(app.downloads)} downloads{app.date && ` · ${app.date}`}</span>
+                  </span>
+                  <span className="flex gap-2">
+                    <StoreLinks app={app} />
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </details>
         </Section>
 
         <Section id="experiencia" act="Act III · Turnê" title="Trajetória">
@@ -134,6 +205,11 @@ export default function Home() {
           <a href={`mailto:${profile.email}`} className="holo break-all font-display text-xl font-semibold sm:text-3xl">
             {profile.email}
           </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className={link}>LinkedIn</a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className={link}>GitHub</a>
+            <a href={profile.resume} download className={link}>Currículo PDF</a>
+          </div>
         </Section>
       </main>
 
