@@ -6,8 +6,8 @@ import { content, publishedApps } from "@/lib/data";
 export const dynamicParams = false;
 export const generateStaticParams = () => [{ lang: "pt" }, { lang: "en" }];
 
-export async function GET(_: Request, { params }: { params: Promise<{ lang: "pt" | "en" }> }) {
-  const { ui } = content[(await params).lang];
+export async function GET(_: Request, { params }: { params: Promise<{ lang: string }> }) {
+  const { ui } = content[(await params).lang as keyof typeof content];
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: 80, background: "#000", color: "#fff" }}>
