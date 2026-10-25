@@ -54,8 +54,8 @@ const pt = {
     },
   ],
   education: [
-    { title: "Mestrado em Ciência da Computação", place: "UFMA (pesquisa em IHC e UX)", year: "2025" },
-    { title: "Bacharelado em Ciência da Computação", place: "UFMA", year: "2022" },
+    { title: "Mestrado em Ciência da Computação", place: "UFMA (pesquisa em IHC e UX)", year: "2023 – 2025" },
+    { title: "Bacharelado em Ciência da Computação", place: "UFMA", year: "2019 – 2022" },
   ],
   skills: {
     Mobile: ["Flutter", "Dart", "Kotlin", "Swift", "Jetpack Compose", "SwiftUI", "Platform channels", "React Native"],
@@ -160,8 +160,8 @@ const en: typeof pt = {
     },
   ],
   education: [
-    { title: "M.Sc. in Computer Science", place: "UFMA (research in HCI and UX)", year: "2025" },
-    { title: "B.Sc. in Computer Science", place: "UFMA", year: "2022" },
+    { title: "M.Sc. in Computer Science", place: "UFMA (research in HCI and UX)", year: "2023 – 2025" },
+    { title: "B.Sc. in Computer Science", place: "UFMA", year: "2019 – 2022" },
   ],
   skills: {
     Mobile: ["Flutter", "Dart", "Kotlin", "Swift", "Jetpack Compose", "SwiftUI", "Platform channels", "React Native"],
