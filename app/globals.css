@@ -110,6 +110,65 @@ body {
   animation: twinkle 4s ease-in-out infinite alternate;
 }
 
+/* Tema claro: inverte a paleta usada nas classes (zinc, white, black) em vez de duplicar cada classe */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-white: oklch(14.1% 0.005 285.823);
+  --color-black: oklch(100% 0 0);
+  --color-zinc-100: oklch(21% 0.006 285.885);
+  --color-zinc-200: oklch(27.4% 0.006 286.033);
+  --color-zinc-300: oklch(37% 0.013 285.805);
+  --color-zinc-400: oklch(44.2% 0.017 285.786);
+  --color-zinc-500: oklch(50% 0.016 285.938);
+  --color-zinc-600: oklch(70.5% 0.015 286.067);
+}
+[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #e4e4ea 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 60%, #efe6f7 0%, transparent 70%),
+    #fafafb;
+}
+[data-theme="light"] .chrome {
+  background-image: linear-gradient(
+    100deg,
+    #2a2a30 0%, #5c5c66 18%, #18181c 32%, #6e6e78 46%, #26262c 60%, #55555e 78%, #1c1c21 100%
+  );
+}
+[data-theme="light"] .holo {
+  background-image: linear-gradient(90deg, #4c5bd4, #a63fc2, #b7741c, #1f8f7a, #4c5bd4);
+}
+[data-theme="light"] .glass {
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.85), rgb(255 255 255 / 0.55));
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.05);
+}
+[data-theme="light"] .glass::before {
+  background: linear-gradient(135deg, rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.04) 40%, rgb(166 63 194 / 0.3) 70%, rgb(31 143 122 / 0.3));
+}
+[data-theme="light"] .btn-chrome {
+  background: linear-gradient(180deg, #4a4a52 0%, #1c1c21 50%, #0a0a0c 100%);
+  color: #fafafb;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.15), inset 0 1px 0 rgb(255 255 255 / 0.2);
+}
+[data-theme="light"] .sparkles,
+[data-theme="light"] .beams {
+  filter: invert(1);
+}
+[data-theme="light"] .disco {
+  box-shadow:
+    inset -30px -30px 60px rgb(0 0 0 / 0.6),
+    inset 10px 10px 30px rgb(255 255 255 / 0.4),
+    0 10px 40px rgb(0 0 0 / 0.15);
+}
+
+/* Botão de tema mostra o ícone do tema para o qual vai trocar */
+.theme-icon-dark,
+[data-theme="light"] .theme-icon-light {
+  display: none;
+}
+[data-theme="light"] .theme-icon-dark {
+  display: inline;
+}
+
 @keyframes shine {
   to { background-position: -250% 0; }
 }
