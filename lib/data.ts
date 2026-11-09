@@ -1,84 +1,34 @@
+import master from "../content/perfil-mestre.json";
+
+// Perfil, resumo, experiência, formação e habilidades vêm de content/perfil-mestre.json,
+// a fonte única usada também pelo currículo e pelo LinkedIn. Edite lá, não aqui.
 export const profile = {
-  name: "Arthur Marinho dos Passos",
-  location: "São Luís, MA",
-  email: "arthurpassosti@gmail.com",
-  linkedin: "https://www.linkedin.com/in/arthurmarinhodospassos/",
-  github: "https://github.com/ArthurPassos16",
+  name: master.contato.nome,
+  location: master.contato.cidade.pt,
+  email: master.contato.email,
+  linkedin: master.contato.linkedin,
+  github: master.contato.github,
 };
+
+const fromMaster = (lang: "pt" | "en") => ({
+  role: master.titulo[lang],
+  summary: master.resumo[lang],
+  experience: master.experiencia
+    .filter((e) => e.canais.includes("site"))
+    .map((e) => ({ company: e.empresa, role: e.cargo[lang], period: e.periodo[lang] as string | undefined, bullets: e.bullets[lang] })),
+  education: master.formacao.map((f) => ({ title: f.titulo[lang], place: f.instituicao[lang], year: f.periodo })),
+  skills: master.habilidades.completo[lang] as Record<string, string[]>,
+});
 
 // downloads: Google Play + App Store (primeiro download), até 20/10/2026
 // status: when set, the store links are hidden and the label is shown instead
-export type App = { name: string; series: string; date?: string; downloads: number; play: string; apple?: string; status?: "Em breve" | "Suspenso · período eleitoral" };
+export type App = { name: string; series: string; date?: string; downloads: number; play: string; apple?: string; status?: "Em breve" };
 
 export type Lang = "pt" | "en";
 
 const pt = {
   locale: "pt-BR",
-  role: "Desenvolvedor Mobile | Flutter e Dart",
-  summary:
-    "Desenvolvedor Mobile com 4 anos de experiência em Flutter e Dart, com 23 apps publicados e mais de 5.500 downloads na App Store e no Google Play, incluindo apps white-label para o Governo Federal (Ministério da Saúde e Ministério do Turismo). Atualmente desenvolvo um app Flutter com requisitos de segurança de nível bancário (projeto confidencial) — biometria facial, OAuth com Keycloak, App Attest e Play Integrity. Mestre em Ciência da Computação.",
-  experience: [
-    {
-      company: "Citiesoft",
-      role: "Desenvolvedor Mobile Pleno",
-      period: "jan/2026 – Atual" as string | undefined,
-      bullets: [
-        "Desenvolvimento em andamento de um app Flutter com requisitos de segurança de nível bancário (projeto confidencial).",
-        "Verificação de identidade com extração de dados de documento e prova de vida facial (AWS Rekognition), via platform channels em Kotlin e Swift.",
-        "Autenticação OAuth com Keycloak, App Attest (iOS), Play Integrity (Android) e leitura de cartões NFC.",
-        "~98% de sessões sem falhas, monitorado com Firebase Crashlytics (app ainda em homologação).",
-        "Pipeline de CI que valida cada PR em ~10 min: formatação, análise estática, testes automatizados e gate de cobertura mínima.",
-        "Publicação nas lojas automatizada com Fastlane, evoluindo para deploy contínuo via Jenkins; design system como pacote Git privado.",
-        "Revisão de PRs e definição de padrões de arquitetura do time mobile.",
-      ],
-    },
-    {
-      company: "UNASUS/UFMA",
-      role: "Desenvolvedor Mobile",
-      period: "jan/2022 – Atual",
-      bullets: [
-        "Apps white-label em Flutter para a universidade e o Governo Federal (Ministério da Saúde e Ministério do Turismo), publicados e mantidos nas duas lojas.",
-        "Ciclo completo: requisitos, arquitetura (MVVM com Provider), publicação e manutenção.",
-        "Firebase (Auth, Firestore, Functions, Crashlytics, Analytics, Cloud Messaging) para estabilidade, métricas e push.",
-        "Testes unitários e de widget, code reviews em times ágeis com Git e CI/CD.",
-      ],
-    },
-    {
-      company: "Argo e LogLab",
-      role: "Analista de Requisitos de Software",
-      period: "jun/2025 – jan/2026",
-      bullets: [
-        "Alocado na Secretaria Municipal da Fazenda de São Luís (SEMFAZ); o trabalho iniciado pela Argo continuou pela LogLab a partir de ago/2025, após a troca de empresa contratante.",
-        "Levantamento e análise de requisitos em reuniões com as áreas da secretaria.",
-        "Documentação funcional: requisitos, casos de uso, protótipos, histórias de usuário e modelos de dados.",
-        "Avaliação de benefícios, impactos e riscos das demandas; ponte entre desenvolvimento, clientes e demais setores, e suporte às validações.",
-      ],
-    },
-    {
-      company: "NCA/UFMA",
-      role: "Desenvolvedor Full Stack",
-      period: "out/2024 – jan/2025",
-      bullets: [
-        "Plataforma que identifica ligações irregulares em postes por geolocalização e imagens de satélite, para cliente do setor de infraestrutura.",
-        "Front-end em Next.js e back-end em Python; serviços REST e visualizações de dados geoespaciais.",
-        "Otimização de consultas em bancos de alto volume e modelagem de estruturas de dados complexas.",
-      ],
-    },
-  ],
-  education: [
-    { title: "Mestrado em Ciência da Computação", place: "UFMA (pesquisa em IHC e UX)", year: "2023 – 2025" },
-    { title: "Bacharelado em Ciência da Computação", place: "UFMA", year: "2019 – 2022" },
-  ],
-  skills: {
-    Mobile: ["Flutter", "Dart", "React Native", "Expo"],
-    Nativo: ["Kotlin", "Swift", "Jetpack Compose", "SwiftUI", "Platform channels"],
-    Web: ["React", "Next.js", "TypeScript", "Python"],
-    "Arquitetura e Estado": ["MVVM", "Provider", "Clean Architecture", "SOLID", "Clean Code", "BLoC/Cubit", "get_it", "go_router", "Flavors", "White-label"],
-    "APIs e Segurança": ["REST", "OAuth/Keycloak", "App Attest", "Play Integrity", "AWS Rekognition", "NFC"],
-    Firebase: ["Auth", "Firestore", "Functions", "Crashlytics", "Analytics", "Cloud Messaging"],
-    "Engenharia e ferramentas": ["Testes unitários e de widget", "Code review", "Git", "Azure DevOps", "Jenkins", "Fastlane", "App Store Connect", "Google Play Console"],
-    Idiomas: ["Português (nativo)", "Inglês (C1 EF SET)"],
-  } as Record<string, string[]>,
+  ...fromMaster("pt"),
   caseStudies: [
     {
       app: "MTUR Games",
@@ -147,71 +97,7 @@ const pt = {
 
 const en: typeof pt = {
   locale: "en-US",
-  role: "Mobile Developer | Flutter & Dart",
-  summary:
-    "Mobile Developer with 4 years of experience in Flutter and Dart, with 23 published apps and over 5,500 downloads on the App Store and Google Play, including white-label apps for Brazil's Federal Government (Ministry of Health and Ministry of Tourism). Currently building a Flutter app with bank-grade security requirements (confidential project): facial biometrics, OAuth with Keycloak, App Attest and Play Integrity. M.Sc. in Computer Science.",
-  experience: [
-    {
-      company: "Citiesoft",
-      role: "Mid-level Mobile Developer",
-      period: "Jan 2026 – Present",
-      bullets: [
-        "Ongoing development of a Flutter app with bank-grade security requirements (confidential project).",
-        "Identity verification with document data extraction and facial liveness detection (AWS Rekognition), via platform channels in Kotlin and Swift.",
-        "OAuth authentication with Keycloak, App Attest (iOS), Play Integrity (Android) and NFC card reading.",
-        "~98% crash-free sessions, monitored with Firebase Crashlytics (app still in acceptance testing).",
-        "CI pipeline that validates every PR in ~10 min: formatting, static analysis, automated tests and a minimum coverage gate.",
-        "Store releases automated with Fastlane, moving toward continuous deployment via Jenkins; design system shipped as a private Git package.",
-        "PR reviews and architecture standards for the mobile team.",
-      ],
-    },
-    {
-      company: "UNASUS/UFMA",
-      role: "Mobile Developer",
-      period: "Jan 2022 – Present",
-      bullets: [
-        "White-label Flutter apps for the university and Brazil's Federal Government (Ministry of Health and Ministry of Tourism), published and maintained on both stores.",
-        "Full cycle: requirements, architecture (MVVM with Provider), release and maintenance.",
-        "Firebase (Auth, Firestore, Functions, Crashlytics, Analytics, Cloud Messaging) for stability, metrics and push notifications.",
-        "Unit and widget tests, code reviews in agile teams with Git and CI/CD.",
-      ],
-    },
-    {
-      company: "Argo and LogLab",
-      role: "Software Requirements Analyst",
-      period: "Jun 2025 – Jan 2026",
-      bullets: [
-        "Allocated to the São Luís Municipal Finance Department (SEMFAZ); the work started by Argo continued under LogLab from Aug 2025, after the contracting company changed.",
-        "Requirements gathering and analysis in meetings with the department's areas.",
-        "Functional documentation: requirements, use cases, prototypes, user stories and data models.",
-        "Assessment of benefits, impacts and risks of each demand; bridge between development, clients and other sectors, and support for validations.",
-      ],
-    },
-    {
-      company: "NCA/UFMA",
-      role: "Full Stack Developer",
-      period: "Oct 2024 – Jan 2025",
-      bullets: [
-        "Platform that identifies irregular connections on utility poles using geolocation and satellite imagery, for an infrastructure-sector client.",
-        "Front end in Next.js and back end in Python; REST services and geospatial data visualizations.",
-        "Query optimization on high-volume databases and modeling of complex data structures.",
-      ],
-    },
-  ],
-  education: [
-    { title: "M.Sc. in Computer Science", place: "UFMA (research in HCI and UX)", year: "2023 – 2025" },
-    { title: "B.Sc. in Computer Science", place: "UFMA", year: "2019 – 2022" },
-  ],
-  skills: {
-    Mobile: ["Flutter", "Dart", "React Native", "Expo"],
-    Native: ["Kotlin", "Swift", "Jetpack Compose", "SwiftUI", "Platform channels"],
-    Web: ["React", "Next.js", "TypeScript", "Python"],
-    "Architecture & State": ["MVVM", "Provider", "Clean Architecture", "SOLID", "Clean Code", "BLoC/Cubit", "get_it", "go_router", "Flavors", "White-label"],
-    "APIs & Security": ["REST", "OAuth/Keycloak", "App Attest", "Play Integrity", "AWS Rekognition", "NFC"],
-    Firebase: ["Auth", "Firestore", "Functions", "Crashlytics", "Analytics", "Cloud Messaging"],
-    "Engineering & tooling": ["Unit and widget tests", "Code review", "Git", "Azure DevOps", "Jenkins", "Fastlane", "App Store Connect", "Google Play Console"],
-    Languages: ["Portuguese (native)", "English (C1 EF SET)"],
-  },
+  ...fromMaster("en"),
   caseStudies: [
     {
       app: "MTUR Games",
@@ -261,7 +147,6 @@ const en: typeof pt = {
   },
   status: {
     "Em breve": "Coming soon",
-    "Suspenso · período eleitoral": "Paused · election period",
   },
   ui: {
     title: "Arthur Passos | Flutter Mobile Developer",
@@ -314,38 +199,38 @@ export const apps: App[] = [
   { name: "Pessoa com Deficiência 4", series: "Pessoa com Deficiência", downloads: 45, date: "28/11/2023", play: "https://play.google.com/store/apps/details?id=br.ufma.bd_pcd_iv", apple: "https://apps.apple.com/br/app/pessoa-com-defici%C3%AAncia-4/id6472811711" },
   { name: "Pessoa com Deficiência 5", series: "Pessoa com Deficiência", downloads: 47, date: "19/12/2023", play: "https://play.google.com/store/apps/details?id=br.ufma.bd_pcd_v", apple: "https://apps.apple.com/br/app/pessoa-com-defici%C3%AAncia-5/id6473919367" },
   {
-    name: "Saúde Digital Usuários do SUS", series: "Saúde Digital", downloads: 1097, status: "Suspenso · período eleitoral",
+    name: "Saúde Digital Usuários do SUS", series: "Saúde Digital", downloads: 1097,
     date: "27/08/2025",
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_saude_digital",
-    apple: "https://apps.apple.com/us/app/saúde-digital-usuários-do-sus/id6743623152",
+    apple: "https://apps.apple.com/br/app/saúde-digital-usuários-do-sus/id6743623152",
   },
   {
-    name: "Saúde Digital Profissionais I", series: "Saúde Digital", status: "Suspenso · período eleitoral", downloads: 152,
+    name: "Saúde Digital Profissionais I", series: "Saúde Digital", downloads: 152,
     date: "25/11/2025",
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_saude_digital_profissionais1",
-    apple: "https://apps.apple.com/us/app/saúde-digital-profissionais-i/id6755150612",
+    apple: "https://apps.apple.com/br/app/saúde-digital-profissionais-i/id6755150612",
   },
   {
-    name: "Políticas em Saúde Bucal", series: "Gestão em Saúde Bucal", status: "Suspenso · período eleitoral", downloads: 9,
+    name: "Políticas em Saúde Bucal", series: "Gestão em Saúde Bucal", downloads: 9,
     date: "29/04/2026",
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_ceo",
-    apple: "https://apps.apple.com/us/app/políticas-em-saúde-bucal/id6749771361",
+    apple: "https://apps.apple.com/br/app/políticas-em-saúde-bucal/id6749771361",
   },
   {
-    name: "Gestão em Saúde Bucal I", series: "Gestão em Saúde Bucal", status: "Suspenso · período eleitoral", downloads: 13,
+    name: "Gestão em Saúde Bucal I", series: "Gestão em Saúde Bucal", downloads: 13,
     date: "23/03/2026",
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_ceo2",
-    apple: "https://apps.apple.com/us/app/gestão-em-saúde-bucal-i/id6752677407",
+    apple: "https://apps.apple.com/br/app/gestão-em-saúde-bucal-i/id6752677407",
   },
   {
-    name: "Gestão em Saúde Bucal II", series: "Gestão em Saúde Bucal", downloads: 3, status: "Em breve",
+    name: "Gestão em Saúde Bucal II", series: "Gestão em Saúde Bucal", downloads: 3,
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_ceo3",
-    apple: "https://apps.apple.com/us/app/gestão-em-saúde-bucal-ii/id6759197234",
+    apple: "https://apps.apple.com/br/app/gestão-em-saúde-bucal-ii/id6759197234",
   },
   {
-    name: "Gerência de CEO SESB", series: "Gestão em Saúde Bucal", downloads: 1, status: "Em breve",
+    name: "Gerência de CEO SESB", series: "Gestão em Saúde Bucal", downloads: 1,
     play: "https://play.google.com/store/apps/details?id=br.ufma.bd_ceo4",
-    apple: "https://apps.apple.com/us/app/ger%C3%AAncia-de-ceo-sesb/id6759197281",
+    apple: "https://apps.apple.com/br/app/ger%C3%AAncia-de-ceo-sesb/id6759197281",
   },
   {
     name: "BD MTUR", series: "Turismo", downloads: 223,
