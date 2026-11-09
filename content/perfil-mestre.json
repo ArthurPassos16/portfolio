@@ -1,0 +1,514 @@
+{
+  "_sobre": "Fonte única da verdade do perfil profissional de Arthur Marinho dos Passos. Site (lib/data.ts), currículos PT/EN e LinkedIn devem ser gerados ou copiados a partir daqui. Ao mudar qualquer fato, edite este arquivo primeiro.",
+  "_atualizado_em": "2026-11-09",
+  "regras": {
+    "confidencialidade": [
+      "Citiesoft: descrever como 'app financeiro do setor público'. Nunca escrever 'moeda digital', nunca chamar de white-label, nunca citar o município ou o cliente.",
+      "Citiesoft: o app está em homologação. Nunca dizer que foi lançado; os 20 mil beneficiários são previsão.",
+      "NCA/UFMA: o cliente é 'cliente do setor de infraestrutura'. Nunca citar o nome do cliente nem 'concessionária de energia', e não associar o cliente ao NCA em nenhum texto público."
+    ],
+    "veracidade": [
+      "Nunca inventar experiência, número ou ferramenta. Só usar o que está neste arquivo.",
+      "Não usa Codemagic. CI/CD é Jenkins, Azure DevOps e Fastlane.",
+      "Não incluir itens de outra pessoa: MICCAI, CBIS/JHI, RetinoScore, Trilhas Inova, Lab TeleMídia e pesquisa de retina não são do Arthur."
+    ],
+    "estilo": [
+      "Sem travessão (—) em currículo, LinkedIn e cartas.",
+      "Bullets no formato verbo de ação + contexto/tecnologia + resultado, em primeira pessoa no passado (Entreguei, Criei, Desenvolvi).",
+      "Currículo em uma página, coluna única, compatível com ATS."
+    ]
+  },
+  "contato": {
+    "nome": "Arthur Marinho dos Passos",
+    "cidade": {
+      "pt": "São Luís, MA (Remoto)",
+      "en": "São Luís, Brazil (Remote)"
+    },
+    "telefone": "+55 98 98198-7594",
+    "email": "arthurpassosti@gmail.com",
+    "portfolio": "https://www.arthurpassos.com",
+    "linkedin": "https://www.linkedin.com/in/arthurmarinhodospassos/",
+    "github": "https://github.com/ArthurPassos16"
+  },
+  "numeros": {
+    "anos_experiencia_flutter": 4,
+    "apps_publicados": 23,
+    "apps_em_breve": 2,
+    "downloads": "5.500+",
+    "downloads_data_base": "2026-10-20",
+    "sessoes_sem_crash": "98% (em homologação, Firebase Crashlytics)",
+    "ci_por_pr": "~10 min (formatação, análise estática, testes automatizados, gate de cobertura)",
+    "beneficiarios_previstos": "~20 mil no lançamento (previsão)",
+    "mtur_games_jogos": 10,
+    "_pendentes": "cobertura de testes em %, tempo de release antes/depois, ganho de performance medido"
+  },
+  "titulo": {
+    "pt": "Desenvolvedor Mobile Flutter | Kotlin e Swift",
+    "en": "Flutter Mobile Developer | Kotlin & Swift"
+  },
+  "resumo": {
+    "pt": "Desenvolvedor Mobile com 4 anos de experiência em Flutter e Dart, Clean Architecture e BLoC, com integrações nativas em Kotlin e Swift. Publiquei 23 apps na App Store e no Google Play, com mais de 5.500 downloads, e hoje construo um app financeiro do setor público com foco em segurança (Play Integrity, App Attest e biometria facial), testes automatizados e CI/CD, com 98% das sessões sem crash em homologação. Uso IA no fluxo de desenvolvimento (Claude Code) e sou Mestre em Ciência da Computação pela UFMA.",
+    "en": "Mobile developer with 4 years of experience in Flutter and Dart, Clean Architecture and BLoC, with native integrations in Kotlin and Swift. Published 23 apps on the App Store and Google Play with over 5,500 downloads, and currently building a public-sector financial app focused on security (Play Integrity, App Attest and facial biometrics), automated testing and CI/CD, at 98% crash-free sessions in user acceptance testing. Use AI in my daily development workflow (Claude Code). M.Sc. in Computer Science from UFMA."
+  },
+  "experiencia": [
+    {
+      "id": "citiesoft",
+      "empresa": "Citiesoft",
+      "local": {
+        "pt": "São Luís, MA",
+        "en": "São Luís, Brazil"
+      },
+      "cargo": {
+        "pt": "Desenvolvedor Mobile Pleno",
+        "en": "Mid-level Mobile Developer"
+      },
+      "inicio": "2026-01-12",
+      "fim": null,
+      "periodo": {
+        "pt": "jan/2026 – Atual",
+        "en": "Jan 2026 – Present"
+      },
+      "canais": [
+        "curriculo",
+        "site",
+        "linkedin"
+      ],
+      "bullets": {
+        "pt": [
+          "Construí em Flutter um app financeiro do setor público com requisitos de segurança de nível bancário, hoje em homologação com 98% das sessões sem crash e previsão de atender cerca de 20 mil beneficiários no lançamento.",
+          "Criei o fluxo de verificação de identidade que une extração de dados de documento e prova de vida facial com AWS Rekognition, integrado via platform channels em Kotlin e Swift.",
+          "Implementei autenticação OAuth com Keycloak e segurança de dispositivo com App Attest (iOS) e Play Integrity (Android), e destravei a leitura NFC no iOS com um platform channel nativo quando o pacote Flutter não atendia.",
+          "Estruturei a CI que valida cada pull request em cerca de 10 minutos no Jenkins (formatação, análise estática, testes automatizados e gate de cobertura), escrevi testes de integração com integration_test e automatizei a publicação nas lojas com Fastlane.",
+          "Atuo como referência técnica do time: defini os padrões de arquitetura (Clean Architecture, BLoC/Cubit, get_it, go_router), faço code review dos pull requests e apoio as decisões técnicas junto ao Tech Lead."
+        ],
+        "en": [
+          "Built a public-sector financial app in Flutter with banking-grade security requirements, now in user acceptance testing with 98% crash-free sessions and expected to serve around 20,000 beneficiaries at launch.",
+          "Created the identity verification flow combining document data extraction with AWS Rekognition face liveness, integrated through platform channels in Kotlin and Swift.",
+          "Implemented OAuth authentication with Keycloak and device security with App Attest (iOS) and Play Integrity (Android), and unblocked iOS NFC reading with a native platform channel when the Flutter package fell short.",
+          "Set up the CI pipeline that validates each pull request in about 10 minutes on Jenkins (formatting, static analysis, automated tests and a coverage gate), wrote integration tests with integration_test and automated store releases with Fastlane.",
+          "Serve as the team technical reference: defined the architecture standards (Clean Architecture, BLoC/Cubit, get_it, go_router), review pull requests and support technical decisions with the Tech Lead."
+        ]
+      },
+      "tecnologias": [
+        "Flutter",
+        "Dart",
+        "Kotlin",
+        "Swift",
+        "Clean Architecture",
+        "BLoC/Cubit",
+        "get_it",
+        "go_router",
+        "Keycloak",
+        "AWS Rekognition",
+        "App Attest",
+        "Play Integrity",
+        "NFC",
+        "Firebase Crashlytics",
+        "Jenkins",
+        "Azure DevOps",
+        "Fastlane"
+      ]
+    },
+    {
+      "id": "unasus",
+      "empresa": "UNA-SUS/UFMA",
+      "local": {
+        "pt": "São Luís, MA",
+        "en": "São Luís, Brazil"
+      },
+      "cargo": {
+        "pt": "Desenvolvedor Mobile",
+        "en": "Mobile Developer"
+      },
+      "inicio": "2022-01-01",
+      "fim": null,
+      "periodo": {
+        "pt": "jan/2022 – Atual",
+        "en": "Jan 2022 – Present"
+      },
+      "canais": [
+        "curriculo",
+        "site",
+        "linkedin"
+      ],
+      "bullets": {
+        "pt": [
+          "Publiquei 23 apps para a universidade e o Governo Federal (Ministério da Saúde e Ministério do Turismo), em sua maioria bibliotecas digitais white-label em Flutter, somando mais de 5.500 downloads na App Store e no Google Play.",
+          "Assumi o MTUR Games a partir de um código legado problemático e publiquei nas duas lojas os 10 jogos educativos em React Native e TypeScript que capacitam profissionais do turismo a atender pessoas com deficiência.",
+          "Conduzi o ciclo completo dos apps, de requisitos e arquitetura MVVM com Provider a testes unitários e de widget, publicação e manutenção em produção.",
+          "Integrei Firebase (Auth, Firestore, Crashlytics, Analytics, Cloud Messaging) para monitorar falhas em produção, medir o uso e enviar notificações push."
+        ],
+        "en": [
+          "Published 23 apps for the university and the Brazilian Federal Government (Ministry of Health and Ministry of Tourism), mostly white-label digital libraries in Flutter, totaling over 5,500 downloads on the App Store and Google Play.",
+          "Took over MTUR Games from a troubled legacy codebase and shipped to both stores 10 educational games in React Native and TypeScript that train tourism professionals to assist people with disabilities.",
+          "Owned the full app lifecycle, from requirements and MVVM architecture with Provider to unit and widget testing, release and production maintenance.",
+          "Integrated Firebase (Auth, Firestore, Crashlytics, Analytics, Cloud Messaging) to monitor production crashes, track usage and send push notifications."
+        ]
+      },
+      "tecnologias": [
+        "Flutter",
+        "Dart",
+        "MVVM",
+        "Provider",
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Firebase"
+      ]
+    },
+    {
+      "id": "argo-loglab",
+      "empresa": "Argo e LogLab",
+      "local": {
+        "pt": "São Luís, MA",
+        "en": "São Luís, Brazil"
+      },
+      "cargo": {
+        "pt": "Analista de Requisitos de Software",
+        "en": "Software Requirements Analyst"
+      },
+      "inicio": "2025-06",
+      "fim": "2026-01",
+      "periodo": {
+        "pt": "jun/2025 – jan/2026",
+        "en": "Jun 2025 – Jan 2026"
+      },
+      "canais": [
+        "site",
+        "linkedin"
+      ],
+      "_nota": "Fora do currículo de uma página por falta de espaço. Incluir em vagas de análise de sistemas ou requisitos.",
+      "bullets": {
+        "pt": [
+          "Atuei alocado na Secretaria Municipal da Fazenda de São Luís (SEMFAZ), com o trabalho iniciado pela Argo e continuado pela LogLab a partir de ago/2025.",
+          "Levantei e analisei requisitos em reuniões com as áreas da secretaria.",
+          "Produzi a documentação funcional: requisitos, casos de uso, protótipos, histórias de usuário e modelos de dados.",
+          "Avaliei benefícios, impactos e riscos das demandas e fiz a ponte entre desenvolvimento, clientes e demais setores, apoiando as validações."
+        ],
+        "en": [
+          "Worked on site at the São Luís Municipal Finance Department (SEMFAZ); the work started under Argo and continued under LogLab from Aug 2025.",
+          "Gathered and analyzed requirements in meetings with the department's areas.",
+          "Produced functional documentation: requirements, use cases, prototypes, user stories and data models.",
+          "Assessed the benefits, impacts and risks of each demand and bridged development, clients and other teams, supporting validations."
+        ]
+      },
+      "tecnologias": [
+        "Levantamento de requisitos",
+        "Casos de uso",
+        "Histórias de usuário",
+        "Prototipação",
+        "Modelagem de dados"
+      ]
+    },
+    {
+      "id": "nca",
+      "empresa": "NCA/UFMA",
+      "local": {
+        "pt": "São Luís, MA",
+        "en": "São Luís, Brazil"
+      },
+      "cargo": {
+        "pt": "Desenvolvedor Full Stack",
+        "en": "Full Stack Developer"
+      },
+      "inicio": "2024-10",
+      "fim": "2025-01",
+      "periodo": {
+        "pt": "out/2024 – jan/2025",
+        "en": "Oct 2024 – Jan 2025"
+      },
+      "canais": [
+        "curriculo",
+        "site",
+        "linkedin"
+      ],
+      "bullets": {
+        "pt": [
+          "Desenvolvi para um cliente do setor de infraestrutura uma plataforma de detecção de irregularidades em campo a partir de geolocalização e imagens de satélite, com front-end em Next.js e back-end em Python.",
+          "Otimizei consultas em bases de dados de alto volume e modelei as estruturas de dados que alimentam as visualizações geoespaciais da plataforma."
+        ],
+        "en": [
+          "Developed for an infrastructure-sector client a platform that detects field irregularities from geolocation and satellite imagery, with a Next.js front end and a Python back end.",
+          "Optimized queries on high-volume databases and modeled the data structures behind the platform geospatial visualizations."
+        ]
+      },
+      "tecnologias": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Python",
+        "REST",
+        "Dados geoespaciais"
+      ]
+    }
+  ],
+  "formacao": [
+    {
+      "titulo": {
+        "pt": "Mestrado em Ciência da Computação",
+        "en": "M.Sc. in Computer Science"
+      },
+      "instituicao": {
+        "pt": "UFMA (pesquisa em IHC e UX)",
+        "en": "Federal University of Maranhão (UFMA), research in HCI and UX"
+      },
+      "periodo": "2023 – 2025"
+    },
+    {
+      "titulo": {
+        "pt": "Bacharelado em Ciência da Computação",
+        "en": "B.Sc. in Computer Science"
+      },
+      "instituicao": {
+        "pt": "UFMA",
+        "en": "Federal University of Maranhão (UFMA)"
+      },
+      "periodo": "2019 – 2023"
+    }
+  ],
+  "habilidades": {
+    "_uso": "'curriculo' é a lista enxuta (ATS, uma página). 'completo' é para o site e o LinkedIn.",
+    "curriculo": {
+      "pt": {
+        "Mobile": [
+          "Flutter",
+          "Dart",
+          "Kotlin",
+          "Swift",
+          "Platform Channels"
+        ],
+        "Arquitetura": [
+          "Clean Architecture",
+          "BLoC/Cubit",
+          "MVVM"
+        ],
+        "Qualidade": [
+          "Testes unitários, de widget e de integração",
+          "Code review"
+        ],
+        "Segurança": [
+          "Play Integrity",
+          "App Attest",
+          "OAuth/Keycloak"
+        ],
+        "CI/CD e Nuvem": [
+          "Jenkins",
+          "Azure DevOps",
+          "Fastlane",
+          "Firebase",
+          "AWS"
+        ],
+        "IA": [
+          "Claude Code (desenvolvimento assistido por IA)"
+        ],
+        "Idiomas": [
+          "Português (nativo)",
+          "Inglês (avançado, C1 EF SET)"
+        ]
+      },
+      "en": {
+        "Mobile": [
+          "Flutter",
+          "Dart",
+          "Kotlin",
+          "Swift",
+          "Platform Channels"
+        ],
+        "Architecture": [
+          "Clean Architecture",
+          "BLoC/Cubit",
+          "MVVM"
+        ],
+        "Quality": [
+          "Unit, widget and integration testing",
+          "Code review"
+        ],
+        "Security": [
+          "Play Integrity",
+          "App Attest",
+          "OAuth/Keycloak"
+        ],
+        "CI/CD & Cloud": [
+          "Jenkins",
+          "Azure DevOps",
+          "Fastlane",
+          "Firebase",
+          "AWS"
+        ],
+        "AI": [
+          "Claude Code (AI-assisted development)"
+        ],
+        "Languages": [
+          "Portuguese (native)",
+          "English (advanced, C1 EF SET)"
+        ]
+      }
+    },
+    "completo": {
+      "pt": {
+        "Mobile": [
+          "Flutter",
+          "Dart",
+          "React Native",
+          "Expo"
+        ],
+        "Nativo": [
+          "Kotlin",
+          "Swift",
+          "Jetpack Compose",
+          "SwiftUI",
+          "Platform Channels"
+        ],
+        "Web": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Python"
+        ],
+        "Arquitetura e Estado": [
+          "Clean Architecture",
+          "MVVM",
+          "BLoC/Cubit",
+          "Provider",
+          "SOLID",
+          "Clean Code",
+          "get_it",
+          "go_router",
+          "Flavors"
+        ],
+        "APIs e Segurança": [
+          "REST",
+          "OAuth/Keycloak",
+          "App Attest",
+          "Play Integrity",
+          "AWS Rekognition",
+          "NFC"
+        ],
+        "Firebase": [
+          "Auth",
+          "Firestore",
+          "Functions",
+          "Crashlytics",
+          "Analytics",
+          "Cloud Messaging"
+        ],
+        "Qualidade": [
+          "Testes unitários",
+          "Testes de widget",
+          "Testes de integração (integration_test)",
+          "Code review"
+        ],
+        "CI/CD e Ferramentas": [
+          "Git",
+          "Jenkins",
+          "Azure DevOps",
+          "Fastlane",
+          "App Store Connect",
+          "Google Play Console"
+        ],
+        "IA": [
+          "Claude Code"
+        ],
+        "Métodos": [
+          "Scrum/Ágil",
+          "Azure Boards"
+        ],
+        "Idiomas": [
+          "Português (nativo)",
+          "Inglês (C1 EF SET)"
+        ]
+      },
+      "en": {
+        "Mobile": [
+          "Flutter",
+          "Dart",
+          "React Native",
+          "Expo"
+        ],
+        "Native": [
+          "Kotlin",
+          "Swift",
+          "Jetpack Compose",
+          "SwiftUI",
+          "Platform Channels"
+        ],
+        "Web": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Python"
+        ],
+        "Architecture & State": [
+          "Clean Architecture",
+          "MVVM",
+          "BLoC/Cubit",
+          "Provider",
+          "SOLID",
+          "Clean Code",
+          "get_it",
+          "go_router",
+          "Flavors"
+        ],
+        "APIs & Security": [
+          "REST",
+          "OAuth/Keycloak",
+          "App Attest",
+          "Play Integrity",
+          "AWS Rekognition",
+          "NFC"
+        ],
+        "Firebase": [
+          "Auth",
+          "Firestore",
+          "Functions",
+          "Crashlytics",
+          "Analytics",
+          "Cloud Messaging"
+        ],
+        "Quality": [
+          "Unit tests",
+          "Widget tests",
+          "Integration tests (integration_test)",
+          "Code review"
+        ],
+        "CI/CD & Tooling": [
+          "Git",
+          "Jenkins",
+          "Azure DevOps",
+          "Fastlane",
+          "App Store Connect",
+          "Google Play Console"
+        ],
+        "AI": [
+          "Claude Code"
+        ],
+        "Methods": [
+          "Scrum/Agile",
+          "Azure Boards"
+        ],
+        "Languages": [
+          "Portuguese (native)",
+          "English (C1 EF SET)"
+        ]
+      }
+    }
+  },
+  "linkedin": {
+    "_uso": "Textos prontos para colar. Limites: título 220 caracteres, Sobre 2.600 caracteres.",
+    "titulo": {
+      "pt": "Desenvolvedor Mobile Flutter | Kotlin e Swift | Clean Architecture, BLoC, testes e CI/CD | 23 apps publicados | Mestre em Ciência da Computação",
+      "en": "Flutter Mobile Developer | Kotlin & Swift | Clean Architecture, BLoC, testing & CI/CD | 23 published apps | M.Sc. in Computer Science"
+    },
+    "sobre": {
+      "pt": "Sou desenvolvedor mobile com 4 anos de experiência em Flutter e Dart, com integrações nativas em Kotlin e Swift.\n\nPubliquei 23 apps na App Store e no Google Play, com mais de 5.500 downloads, a maioria bibliotecas digitais para a UNA-SUS/UFMA, o Ministério da Saúde e o Ministério do Turismo. Comecei no desenvolvimento mobile do zero justamente nesse projeto, e cuido do ciclo completo dos apps: requisitos, arquitetura, testes, publicação e manutenção.\n\nHoje, na Citiesoft, construo um app financeiro do setor público com requisitos de segurança de nível bancário. Criei a verificação de identidade com prova de vida facial (AWS Rekognition) via platform channels, implementei OAuth com Keycloak, App Attest e Play Integrity, e estruturei a CI que valida cada pull request em cerca de 10 minutos. O app está em homologação com 98% das sessões sem crash. Também sou a referência técnica do time em arquitetura (Clean Architecture e BLoC) e code review.\n\nUso IA no dia a dia de desenvolvimento (Claude Code), sou Mestre em Ciência da Computação pela UFMA, com pesquisa em IHC e UX, e tenho inglês avançado (C1, EF SET).\n\nProjetos e apps publicados: arthurpassos.com",
+      "en": "I'm a mobile developer with 4 years of experience in Flutter and Dart, with native integrations in Kotlin and Swift.\n\nI've published 23 apps on the App Store and Google Play, with over 5,500 downloads, mostly digital libraries for UNA-SUS/UFMA, Brazil's Ministry of Health and Ministry of Tourism. I learned mobile development from scratch on that project, and I own the full app lifecycle: requirements, architecture, testing, release and maintenance.\n\nToday at Citiesoft I'm building a public-sector financial app with banking-grade security requirements. I created the identity verification flow with face liveness (AWS Rekognition) through platform channels, implemented OAuth with Keycloak, App Attest and Play Integrity, and set up a CI pipeline that validates every pull request in about 10 minutes. The app is in user acceptance testing at 98% crash-free sessions. I'm also the team's technical reference for architecture (Clean Architecture and BLoC) and code review.\n\nI use AI in my daily development workflow (Claude Code), hold an M.Sc. in Computer Science from UFMA with research in HCI and UX, and speak advanced English (C1, EF SET).\n\nProjects and published apps: arthurpassos.com"
+    },
+    "competencias_destaque": [
+      "Flutter",
+      "Dart",
+      "Kotlin",
+      "Swift",
+      "Clean Architecture"
+    ]
+  }
+}
