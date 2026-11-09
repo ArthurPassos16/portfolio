@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { type App, apps, content, getLang, type Params, profile } from "@/lib/data";
+import shots from "../../public/apps/manifest.json";
 import { ThemeToggle } from "./theme-toggle";
 
 function Section({ id, n, title, children }: { id: string; n: string; title: string; children: React.ReactNode }) {
@@ -34,6 +35,24 @@ function StoreLinks({ app, status }: { app: App; status: Record<string, string> 
       <a href={app.play} target="_blank" rel="noopener noreferrer" className={link}>Google Play</a>
       {app.apple && <a href={app.apple} target="_blank" rel="noopener noreferrer" className={link}>App Store</a>}
     </>
+  );
+}
+
+// click the app to open a strip with its App Store screenshots (native <details>, no JS)
+const row = "flex flex-wrap items-center justify-between gap-2 py-2";
+function ScreenshotRow({ app, children }: { app: App; children: React.ReactNode }) {
+  const id = app.apple?.match(/\/id(\d+)/)?.[1];
+  const imgs = id ? (shots as Record<string, string[]>)[id] : undefined;
+  if (!imgs) return <div className={row}>{children}</div>;
+  return (
+    <details>
+      <summary className={`${row} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>{children}</summary>
+      <div className="flex gap-3 overflow-x-auto pb-3 pt-1">
+        {imgs.map((src, i) => (
+          <Image key={src} src={src} alt={`${app.name} ${i + 1}`} width={196} height={348} loading="lazy" className="h-[348px] w-auto shrink-0 rounded-xl border border-white/10" />
+        ))}
+      </div>
+    </details>
   );
 }
 
@@ -94,9 +113,9 @@ export default async function Home({ params }: { params: Params }) {
             {t.caseStudies.map((c) => (
               <article key={c.app} className="glass p-6 sm:p-8">
                 {c.images.length > 0 && (
-                  <div className={`mb-6 grid gap-3 ${c.images[0].includes("mtur") ? "max-w-3xl sm:grid-cols-3" : "max-w-xl grid-cols-3"}`}>
+                  <div className={`mb-6 grid gap-3 ${c.images[0].includes("6448304900") ? "max-w-3xl sm:grid-cols-3" : "max-w-xl grid-cols-3"}`}>
                     {c.images.map((src, i) => (
-                      <Image key={src} src={src} alt={`${c.app} ${i + 1}`} width={src.includes("mtur") ? 564 : 280} height={src.includes("mtur") ? 280 : 592} className="h-auto w-full rounded-xl border border-white/10" />
+                      <Image key={src} src={src} alt={`${c.app} ${i + 1}`} width={392} height={src.includes("6448304900") ? 180 : 696} className="h-auto w-full rounded-xl border border-white/10" />
                     ))}
                   </div>
                 )}
@@ -131,14 +150,16 @@ export default async function Home({ params }: { params: Params }) {
                 </div>
                 <ul className="mt-4 divide-y divide-white/10">
                   {g.list.map((app) => (
-                    <li key={app.name} className="flex flex-wrap items-center justify-between gap-2 py-2">
-                      <span className="text-sm text-zinc-200">
-                        {app.name}
-                        {app.status !== "Em breve" && <span className="ml-2 font-mono text-[11px] text-zinc-500">{fmt(app.downloads)}</span>}
-                      </span>
-                      <span className="flex gap-2">
-                        <StoreLinks app={app} status={t.status} />
-                      </span>
+                    <li key={app.name}>
+                      <ScreenshotRow app={app}>
+                        <span className="text-sm text-zinc-200">
+                          {app.name}
+                          {app.status !== "Em breve" && <span className="ml-2 font-mono text-[11px] text-zinc-500">{fmt(app.downloads)}</span>}
+                        </span>
+                        <span className="flex gap-2">
+                          <StoreLinks app={app} status={t.status} />
+                        </span>
+                      </ScreenshotRow>
                     </li>
                   ))}
                 </ul>

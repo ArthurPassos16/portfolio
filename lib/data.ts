@@ -40,7 +40,7 @@ const pt = {
         "Finalização e publicação na App Store e no Google Play.",
       ],
       stack: ["React Native", "Expo", "TypeScript"],
-      images: ["/projects/mtur-1.webp", "/projects/mtur-2.webp", "/projects/mtur-3.webp"], // landscape game
+      images: ["/apps/6448304900/1.jpg", "/apps/6448304900/2.jpg", "/apps/6448304900/3.jpg"], // landscape game
       repo: "https://github.com/gruposaite/mtur-games-expo" as string | undefined,
     },
     {
@@ -52,7 +52,7 @@ const pt = {
         "Desenvolvimento e publicação na App Store e no Google Play.",
       ],
       stack: ["Flutter", "Dart", "MVVM", "Provider"],
-      images: ["/projects/urg-1.webp", "/projects/urg-2.webp", "/projects/urg-3.webp"],
+      images: ["/apps/6444193889/1.jpg", "/apps/6444193889/2.jpg", "/apps/6444193889/3.jpg"],
       repo: undefined,
     },
     {
@@ -64,7 +64,7 @@ const pt = {
         "Publicação na App Store e no Google Play; atualmente suspenso durante o período eleitoral.",
       ],
       stack: ["Flutter", "Dart"],
-      images: ["/projects/sus-1.webp", "/projects/sus-2.webp", "/projects/sus-3.webp"],
+      images: ["/apps/6743623152/1.jpg"],
       repo: undefined,
     },
   ],
@@ -109,7 +109,7 @@ const en: typeof pt = {
         "Finalization and publishing on the App Store and Google Play.",
       ],
       stack: ["React Native", "Expo", "TypeScript"],
-      images: ["/projects/mtur-1.webp", "/projects/mtur-2.webp", "/projects/mtur-3.webp"], // landscape game
+      images: ["/apps/6448304900/1.jpg", "/apps/6448304900/2.jpg", "/apps/6448304900/3.jpg"], // landscape game
       repo: "https://github.com/gruposaite/mtur-games-expo",
     },
     {
@@ -121,7 +121,7 @@ const en: typeof pt = {
         "Development and publishing on the App Store and Google Play.",
       ],
       stack: ["Flutter", "Dart", "MVVM", "Provider"],
-      images: ["/projects/urg-1.webp", "/projects/urg-2.webp", "/projects/urg-3.webp"],
+      images: ["/apps/6444193889/1.jpg", "/apps/6444193889/2.jpg", "/apps/6444193889/3.jpg"],
       repo: undefined,
     },
     {
@@ -133,7 +133,7 @@ const en: typeof pt = {
         "Published on the App Store and Google Play; currently paused during the election period.",
       ],
       stack: ["Flutter", "Dart"],
-      images: ["/projects/sus-1.webp", "/projects/sus-2.webp", "/projects/sus-3.webp"],
+      images: ["/apps/6743623152/1.jpg"],
       repo: undefined,
     },
   ],
