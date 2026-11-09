@@ -6,6 +6,12 @@
   --font-display: var(--font-unbounded);
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
@@ -28,7 +34,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 8s linear infinite;
 }
 
 /* Brilho iridescente (holográfico) */
@@ -38,7 +43,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 10s linear infinite;
 }
 
 /* Card de vidro com borda cromada/iridescente */
@@ -90,9 +94,8 @@ body {
 
 /* Raios de luz atrás do globo */
 .beams {
-  background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / 0.07) 0 4deg, transparent 4deg 22deg);
+  background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / 0.04) 0 4deg, transparent 4deg 22deg);
   mask: radial-gradient(circle, #000 20%, transparent 70%);
-  animation: rotate 60s linear infinite;
 }
 
 /* Purpurina de fundo */
@@ -169,14 +172,8 @@ body {
   display: inline;
 }
 
-@keyframes shine {
-  to { background-position: -250% 0; }
-}
 @keyframes spin-tiles {
   to { background-position: 0 0, 0 0, 140px 0, 200% 0; }
-}
-@keyframes rotate {
-  to { transform: rotate(360deg); }
 }
 @keyframes twinkle {
   from { opacity: 0.25; }
@@ -185,4 +182,5 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before { animation: none !important; }
+  html { scroll-behavior: auto; }
 }

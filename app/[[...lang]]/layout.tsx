@@ -26,12 +26,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = await getLang(params);
   const { ui } = content[lang];
   return {
-    // ponytail: swap for the custom domain once it is set up
-    metadataBase: new URL("https://portfolio-two-delta-90.vercel.app"),
+    metadataBase: new URL("https://www.arthurpassos.com"),
     title: ui.title,
     description: ui.description,
     alternates: { languages: { "pt-BR": "/", en: "/en" } },
-    openGraph: { images: [{ url: `/og/${lang}`, width: 1200, height: 630, alt: `${profile.name} · Flutter` }] },
+    openGraph: {
+      type: "website",
+      title: ui.title,
+      description: ui.description,
+      locale: content[lang].locale.replace("-", "_"), images: [{ url: `/og/${lang}`, width: 1200, height: 630, alt: `${profile.name} · Flutter` }] },
   };
 }
 
